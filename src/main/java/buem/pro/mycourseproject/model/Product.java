@@ -1,10 +1,13 @@
 package buem.pro.mycourseproject.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
-
+@Document
 public class Product {
-
+    @Id
     private String id;
     private String name;
     private double price;
@@ -17,8 +20,7 @@ public class Product {
 
     }
 
-    public Product(String id, String name, double price, boolean deliverAbility , String description) {
-        this.id = id;
+    public Product( String name, double price, boolean deliverAbility , String description) {
         this.name = name;
         this.price = price;
         this.deliverAbility = deliverAbility;

@@ -1,29 +1,35 @@
 package buem.pro.mycourseproject.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Document
 public class Customer {
+    @Id
     private String id;
     private String name;
     private String address;
     private String telephoneNumber;
     private String customerName;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Customer() {
     }
 
-    public Customer(String id, String name, String address, String telephoneNumber, String customerName) {
-        this.id = id;
+    public Customer( String name, String address, String telephoneNumber, String customerName) {
+
         this.name = name;
         this.address = address;
         this.telephoneNumber = telephoneNumber;
         this.customerName = customerName;
     }
 
-    public Customer(String id, String name, String address, String telephoneNumber, String customerName, LocalDate createdAt, LocalDate updatedAt) {
+    public Customer(String id, String name, String address, String telephoneNumber, String customerName, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -73,19 +79,19 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -1,12 +1,18 @@
 package buem.pro.mycourseproject.model;
 
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Document
 public class Custom {
+    @Id
     private Product product;
     private Customer customer;
+
     private String id;
     private double amount;
     private LocalDateTime createdAt;
@@ -16,10 +22,9 @@ public class Custom {
 
     }
 
-    public Custom(Product product, Customer customer, String id, double amount, LocalDateTime createdAt) {
+    public Custom(Product product, Customer customer,  double amount, LocalDateTime createdAt) {
         this.product = product;
         this.customer = customer;
-        this.id = id;
         this.amount = amount;
         this.createdAt = createdAt;
     }
