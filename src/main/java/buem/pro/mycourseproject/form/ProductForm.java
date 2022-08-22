@@ -1,13 +1,8 @@
-package buem.pro.mycourseproject.model;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package buem.pro.mycourseproject.form;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
-@Document
-public class Product {
-    @Id
+
+public class ProductForm {
     private String id;
     private String name;
     private double price;
@@ -16,18 +11,18 @@ public class Product {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Product() {
+    public ProductForm() {
 
     }
 
-    public Product(String name, double price, String deliverAbility, String description) {
+    public ProductForm(String name, double price, String deliverAbility, String description) {
         this.name = name;
         this.price = price;
         this.deliverAbility = deliverAbility;
         this.description = description;
     }
 
-    public Product(String id, String name, double price, String deliverAbility, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public ProductForm(String id, String name, double price, String deliverAbility, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -94,26 +89,12 @@ public class Product {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id.equals(product.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-
-    @Override
     public String toString() {
-        return "Product{" +
+        return "ProductForm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", deliverAbility=" + deliverAbility +
+                ", deliverAbility='" + deliverAbility + '\'' +
                 ", description='" + description + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +

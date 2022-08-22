@@ -16,11 +16,12 @@ public class ProductFakeRepository {
     private LocalDateTime now = LocalDateTime.now();
     private List<Product> products = new ArrayList(
             Arrays.asList(
-            new Product("1", "name1", 100, true,"desc1", now, now),
-            new Product("2", "name2", 200, false,"desc2", now, now),
-            new Product("3", "name3", 300, true,"desc3", now, now),
-            new Product("4", "name4", 400, false,"desc4", now, now),
-            new Product("5", "name5", 500, true,"desc5", now, now)
+            new Product("1", "name1", 100, "Yes","desc1", now, now),
+            new Product("2", "name2", 200, "No","desc2", now, now),
+            new Product("3", "name3", 300, "Yes","desc3", now, now),
+            new Product("4", "name4", 400, "No","desc4", now, now),
+            new Product("5", "name5", 500, "Yes","desc5", now, now),
+             new Product("6", "name6", 600, "Yes", "desc6", now, now)
     ));
 
     public List<Product> findAll(){

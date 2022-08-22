@@ -20,9 +20,9 @@ public class CustomFakeRepository {
 
     private List<Custom> customs = new ArrayList(
             Arrays.asList(
-                    new Custom(product, customer,"1", 1, now, now),
-                    new Custom(product, customer,"2", 2, now, now),
-                    new Custom(product, customer,"3", 3, now, now)
+                    new Custom(product, customer, 1, now),
+                    new Custom(product, customer, 2, now),
+                    new Custom(product, customer, 3, now)
             )
     );
     public List<Custom> findAll(){return this.customs;}

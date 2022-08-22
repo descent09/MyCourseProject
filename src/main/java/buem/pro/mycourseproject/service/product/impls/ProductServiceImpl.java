@@ -1,7 +1,6 @@
 package buem.pro.mycourseproject.service.product.impls;
 
 import buem.pro.mycourseproject.model.Product;
-import buem.pro.mycourseproject.repositroy.product.ProductFakeRepository;
 import buem.pro.mycourseproject.repositroy.product.ProductMongoRepository;
 import buem.pro.mycourseproject.service.product.interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +17,17 @@ public class ProductServiceImpl implements IProductService {
     private LocalDateTime now = LocalDateTime.now();
     private List<Product> products = new ArrayList(
             Arrays.asList(
-                    new Product("1", "name1", 100, true,"desc1", now, now),
-                    new Product("2", "name2", 200, false,"desc2", now, now),
-                    new Product("3", "name3", 300, true,"desc3", now, now),
-                    new Product("4", "name4", 400, false,"desc4", now, now),
-                    new Product("5", "name5", 500, true,"desc5", now, now)
+                    new Product("1", "name1", 100, "Yes","desc1", now, now),
+                    new Product("2", "name2", 200, "No","desc2", now, now),
+                    new Product("3", "name3", 300, "Yes","desc3", now, now),
+                    new Product("4", "name4", 400, "No","desc4", now, now),
+                    new Product("5", "name5", 500, "Yes","desc5", now, now),
+                    new Product("6", "name6", 600,"No", "desc6", now,now)
             ));
     @Autowired
     ProductMongoRepository repository;
 
-    //@PostConstruct
+    @PostConstruct
     void init(){
         repository.saveAll(products);
     }
@@ -57,5 +57,9 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public List<Product> getAll() {
         return repository.findAll();
+    }
+
+    public List<Product> saveAll(List<Product> products) {
+       return repository.saveAll(products);
     }
 }
