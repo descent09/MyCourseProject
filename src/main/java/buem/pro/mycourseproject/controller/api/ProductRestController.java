@@ -11,6 +11,7 @@ import java.util.List;
 
 @RequestMapping("/api/v1/products")
 @RestController
+@CrossOrigin
 public class ProductRestController {
 
     @Autowired
@@ -28,11 +29,12 @@ public class ProductRestController {
     public Product showOne(@PathVariable String id){
         return service.get(id);
     }
-    @DeleteMapping("/{id}")
+
+    @GetMapping ("del/{id}")
     public void del(@PathVariable String id){
         service.delete(id);
     }
-    @PostMapping()
+    @PostMapping("/add")
     public Product insertOne(@RequestBody Product product){
         return service.create(product);
     }

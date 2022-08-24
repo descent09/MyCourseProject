@@ -1,5 +1,7 @@
 package buem.pro.mycourseproject.form;
 
+import buem.pro.mycourseproject.model.ProductType;
+
 import java.time.LocalDateTime;
 
 public class ProductForm {
@@ -8,6 +10,7 @@ public class ProductForm {
     private double price;
     private String deliverAbility;
     private String description;
+    private ProductType type;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -15,19 +18,23 @@ public class ProductForm {
 
     }
 
-    public ProductForm(String name, double price, String deliverAbility, String description) {
+    public ProductForm(String name, double price, String deliverAbility, String description, ProductType type) {
         this.name = name;
         this.price = price;
         this.deliverAbility = deliverAbility;
         this.description = description;
+        this.type = type;
     }
 
-    public ProductForm(String id, String name, double price, String deliverAbility, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+
+
+    public ProductForm(String id, String name, double price, String deliverAbility, String description, ProductType type, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.deliverAbility = deliverAbility;
         this.description = description;
+        this.type = type;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -72,6 +79,14 @@ public class ProductForm {
         this.description = description;
     }
 
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -96,6 +111,7 @@ public class ProductForm {
                 ", price=" + price +
                 ", deliverAbility='" + deliverAbility + '\'' +
                 ", description='" + description + '\'' +
+                ", type=" + type +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';

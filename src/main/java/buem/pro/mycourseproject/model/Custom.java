@@ -10,10 +10,11 @@ import java.util.Objects;
 @Document
 public class Custom {
     @Id
+    private String id;
     private Product product;
     private Customer customer;
 
-    private String id;
+
     private double amount;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -22,17 +23,16 @@ public class Custom {
 
     }
 
-    public Custom(Product product, Customer customer,  double amount, LocalDateTime createdAt) {
+    public Custom(Product product, Customer customer, double amount) {
         this.product = product;
         this.customer = customer;
         this.amount = amount;
-        this.createdAt = createdAt;
     }
 
-    public Custom(Product product, Customer customer, String id, double amount, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Custom(String id, Product product, Customer customer, double amount, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
         this.product = product;
         this.customer = customer;
-        this.id = id;
         this.amount = amount;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;

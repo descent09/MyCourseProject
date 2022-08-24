@@ -15,6 +15,7 @@
             <th>Price</th>
             <th>Deliver Ability</th>
             <th>Description</th>
+            <th>Type</th>
             <th>Created at</th>
             <th>Updated at</th>
         </tr>
@@ -26,6 +27,7 @@
                     <td>${product.price}</td>
                     <td>${product.deliverAbility}</td>
                     <td>${product.description}</td>
+                    <td>${product.type}</td>
                     <td><#if product.createdAt??>${product.createdAt}</#if> </td>
                     <td><#if product.updatedAt??>${product.updatedAt}</#if> </td>
                     <td><a href="/ui/UIProduct/v1/products/del/${product.id}">Delete</a></td>

@@ -7,6 +7,8 @@ import buem.pro.mycourseproject.model.Product;
 import buem.pro.mycourseproject.repositroy.custom.CustomMongoRepository;
 
 import buem.pro.mycourseproject.service.custom.interfaces.ICustomService;
+import buem.pro.mycourseproject.service.customer.impls.CustomerServiceImpl;
+import buem.pro.mycourseproject.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,32 +21,38 @@ import java.util.List;
 
 @Service
 public class CustomServiceImpl implements ICustomService {
-    Customer customer;
-    Product product;
+    @Autowired
+    CustomerServiceImpl customerService;
+    @Autowired
+    ProductServiceImpl productService;
     private LocalDateTime now = LocalDateTime.now();
 
-    private List<Custom> customs = new ArrayList(
-            Arrays.asList(
-                    new Custom(product, customer,"1", 1, now, now),
-                    new Custom(product, customer,"2", 2, now, now),
-                    new Custom(product, customer,"3", 3, now, now)
-            )
-    );
+    private List<Custom> customs = new ArrayList<>();
+
     @Autowired
     CustomMongoRepository repository;
 
     @PostConstruct
     void init(){
-        
+        Product product = productService.get("1");
+        Customer customer = customerService.get("1");
+        Custom custom = new Custom("1", product, customer, 2.0, now, now);
+        customs.add(custom);
+        customs.add(new Custom("2",product,customer,3,now,now));
+        customs.add(new Custom("3",productService.get("2"),customerService.get("2"),4,now,now));
+        customs.add(new Custom("4",productService.get("3"),customerService.get("3"),5,now,now));
+        repository.saveAll(customs);
     }
 
     @Override
     public Custom create(Custom custom) {
+        custom.setCreatedAt(LocalDateTime.now());
         return repository.save(custom);
     }
 
     @Override
     public Custom update(Custom custom) {
+        custom.setUpdatedAt(LocalDateTime.now());
         return repository.save(custom);
     }
 

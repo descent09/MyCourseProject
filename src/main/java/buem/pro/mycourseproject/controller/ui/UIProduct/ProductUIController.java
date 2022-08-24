@@ -2,6 +2,7 @@ package buem.pro.mycourseproject.controller.ui.UIProduct;
 
 import buem.pro.mycourseproject.form.ProductForm;
 import buem.pro.mycourseproject.model.Product;
+import buem.pro.mycourseproject.model.ProductType;
 import buem.pro.mycourseproject.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
@@ -32,7 +33,9 @@ public class ProductUIController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addProduct(Model model){
         ProductForm productForm = new ProductForm();
+        var types = ProductType.values();
         model.addAttribute("form", productForm);
+        model.addAttribute("types", types);
         return "addProduct";
     }
 
@@ -43,6 +46,7 @@ public class ProductUIController {
         product.setPrice(form.getPrice());
         product.setDeliverAbility(form.getDeliverAbility());
         product.setDescription(form.getDescription());
+        product.setType(form.getType());
         service.create(product);
         return "redirect:/ui/UIProduct/v1/products/";
     }
