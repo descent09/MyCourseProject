@@ -3,6 +3,9 @@ package buem.pro.mycourseproject.controller.api;
 import buem.pro.mycourseproject.model.Product;
 import buem.pro.mycourseproject.service.product.impls.ProductServiceImpl;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,8 @@ public class ProductRestController {
     ProductServiceImpl service;
 
     @GetMapping("/")
+    @ApiOperation(value = "Get list of products")
+    @ApiResponse(code = 200, message = "success")
     public List<Product> showAll(){
         return service.getAll();
     }
@@ -26,20 +31,29 @@ public class ProductRestController {
         return service.saveAll(products);
     }
     @GetMapping("/{id}")
+    @ApiOperation(value = "Get product by ID")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "success"),
+            @ApiResponse(code = 404, message = "Item with such ID was not founded")
+    })
     public Product showOne(@PathVariable String id){
         return service.get(id);
     }
-
     @GetMapping ("del/{id}")
     public void del(@PathVariable String id){
         service.delete(id);
     }
     @PostMapping("/add")
+    @ApiOperation(value = "Create new product")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "success"),
+            @ApiResponse(code = 400, message = "Bad Request")
+    })
     public Product insertOne(@RequestBody Product product){
         return service.create(product);
     }
-    @PutMapping()
-    public Product updateOne(@RequestBody Product product){
+    @PutMapping("/edit/{id}")
+    public Product updateOne(@PathVariable String id, @RequestBody Product product){
         return service.update(product);
     }
 }

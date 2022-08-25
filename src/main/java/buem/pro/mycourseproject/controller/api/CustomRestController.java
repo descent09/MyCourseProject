@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/custom")
+@RequestMapping("/api/v1/customs")
 @RestController
+@CrossOrigin
 public class CustomRestController {
     @Autowired
     CustomServiceImpl service;
@@ -23,12 +24,12 @@ public class CustomRestController {
         return service.get(id);
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/del/{id}")
     public void del(@PathVariable String id){
         service.delete(id);
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     public Custom insertOne(@RequestBody Custom custom){
         return service.create(custom);
     }

@@ -19,11 +19,11 @@ public class CustomerServiceImpl implements ICustomerService {
     private LocalDateTime now = LocalDateTime.now();
     private List<Customer> customers = new ArrayList(
             Arrays.asList(
-                    new Customer("1", "name1", "address1", "+380501234567","Jhon",now,now),
-                    new Customer("2", "name2", "address2", "+380501234567","Den", now, now),
-                    new Customer("3", "name3", "address3", "+380501234567","Bob", now, now),
-                    new Customer("4", "name4", "address4", "+380501234567","Ann", now, now),
-                    new Customer("5", "name5", "address5", "+380501234567","Olivia", now, now)
+                    new Customer("1", "John01", "Green st. 14", "+380501234567","John",now,now),
+                    new Customer("2", "Den02", "Yellow st. 7", "+380501234567","Den", now, now),
+                    new Customer("3", "Bob03", "Downing st. 81", "+380501234567","Bob", now, now),
+                    new Customer("4", "Ann04", "White st. 9", "+380501234567","Ann", now, now),
+                    new Customer("5", "Olivia5", "Brown st. 1", "+380501234567","Olivia", now, now)
             )
     );
     @Autowired

@@ -1,19 +1,23 @@
 package buem.pro.mycourseproject.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 @Document
+@ApiModel("Product")
 public class Product {
     @Id
+    @ApiModelProperty(value = "UUID is given by MongoDB", required = true, name = "Id", dataType = "String", example = "5276293dsta235sg20258")
     private String id;
     private String name;
     private double price;
     private String deliverAbility;
     private String description;
-    private ProductType type;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -21,33 +25,15 @@ public class Product {
 
     }
 
-    public Product(String name, double price, String deliverAbility, String description, ProductType type) {
-        this.name = name;
-        this.price = price;
-        this.deliverAbility = deliverAbility;
-        this.description = description;
-        this.type = type;
-    }
-
-    public Product(String id, String name, double price, String deliverAbility, String description, ProductType type, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.deliverAbility = deliverAbility;
-        this.description = description;
-        this.type = type;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Product(String name, double price, String deliverAbility, String description) {
         this.name = name;
         this.price = price;
         this.deliverAbility = deliverAbility;
         this.description = description;
+
     }
 
-    public Product(String id, String name, double price, String deliverAbility, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Product(String id, String name, double price, String deliverAbility, String description,  LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -56,6 +42,10 @@ public class Product {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+
+
+
 
     public String getId() {
         return id;
@@ -97,13 +87,9 @@ public class Product {
         this.description = description;
     }
 
-    public ProductType getType() {
-        return type;
-    }
 
-    public void setType(ProductType type) {
-        this.type = type;
-    }
+
+
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

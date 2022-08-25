@@ -10,6 +10,7 @@ import java.util.List;
 
 @RequestMapping("/api/v1/customers")
 @RestController
+@CrossOrigin
 public class CustomerRestController {
     @Autowired
     CustomerServiceImpl service;
@@ -24,12 +25,12 @@ public class CustomerRestController {
         return service.get(id);
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("del/{id}")
     public void del(@PathVariable String id){
         service.delete(id);
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     public Customer insertOne(@RequestBody Customer customer){
         return service.create(customer);
     }

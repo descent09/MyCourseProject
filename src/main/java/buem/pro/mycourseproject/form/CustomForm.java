@@ -6,9 +6,14 @@ import buem.pro.mycourseproject.model.Product;
 import java.time.LocalDateTime;
 
 public class CustomForm {
+
+    private String id;
     private String product;
     private String customer;
     private double amount;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public CustomForm() {
     }
@@ -17,6 +22,39 @@ public class CustomForm {
         this.product = product;
         this.customer = customer;
         this.amount = amount;
+    }
+
+    public CustomForm(String id, String product, String customer, double amount, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.product = product;
+        this.customer = customer;
+        this.amount = amount;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getProduct() {

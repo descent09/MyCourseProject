@@ -34,11 +34,6 @@ public class CustomServiceImpl implements ICustomService {
 
     @PostConstruct
     void init(){
-        Product product = productService.get("1");
-        Customer customer = customerService.get("1");
-        Custom custom = new Custom("1", product, customer, 2.0, now, now);
-        customs.add(custom);
-        customs.add(new Custom("2",product,customer,3,now,now));
         customs.add(new Custom("3",productService.get("2"),customerService.get("2"),4,now,now));
         customs.add(new Custom("4",productService.get("3"),customerService.get("3"),5,now,now));
         repository.saveAll(customs);

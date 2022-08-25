@@ -1,7 +1,6 @@
 package buem.pro.mycourseproject.service.product.impls;
 
 import buem.pro.mycourseproject.model.Product;
-import buem.pro.mycourseproject.model.ProductType;
 import buem.pro.mycourseproject.repositroy.product.ProductMongoRepository;
 import buem.pro.mycourseproject.service.product.interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,12 @@ public class ProductServiceImpl implements IProductService {
     private LocalDateTime now = LocalDateTime.now();
     private List<Product> products = new ArrayList(
             Arrays.asList(
-                    new Product("1", "name1",  100, "Yes","desc1", ProductType.Food, now, now),
-                    new Product("2", "name2", 200, "No","desc2", ProductType.Clothes,now, now),
-                    new Product("3", "name3", 300, "Yes","desc3",  ProductType.Other,now, now),
-                    new Product("4", "name4", 400, "No","desc4",  ProductType.Food,now, now),
-                    new Product("5", "name5", 500, "Yes","desc5",  ProductType.Clothes,now, now),
-                    new Product("6", "name6", 600,"No", "desc6",  ProductType.Other,now,now)
+                    new Product("1", "Milk",  100, "Yes","It is milk", now, now),
+                    new Product("2", "Meat", 200, "No","It is meat", now, now),
+                    new Product("3", "Apple", 300, "Yes","It is apple",  now, now),
+                    new Product("4", "Strawberry", 400, "Yes","It is strawberry",  now, now),
+                    new Product("5", "Lemon", 500, "Yes","It is lemon", now, now),
+                    new Product("6", "Watermelon", 600,"Yes", "It is watermelon", now,now)
             ));
     @Autowired
     ProductMongoRepository repository;
